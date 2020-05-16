@@ -77,15 +77,15 @@ if [ $RASPBIAN_VERSION = "buster" ]
 then
   echo ""
   echo "--- Installing dependencies for Raspbian Buster ---"
-  sudo sed -i 's/buster/stretch/g' /etc/apt/sources.list
-  sudo apt-get update -y && sudo apt-get install -y git build-essential libqt4-dev libprotobuf-dev protobuf-compiler libtool autotools-dev autoconf wget pkg-config libboost-thread-dev libboost-program-options-dev libboost-filesystem-dev libboost-system-dev
-  sudo apt-mark hold libqt4-dev libprotobuf-dev libboost-thread-dev libboost-program-options-dev libboost-filesystem-dev libboost-system-dev && sudo apt-get update -y
-  sudo sed -i 's/stretch/buster/g' /etc/apt/sources.list
+  sudo apt-get update -y && sudo apt-get install -y libqt4-dev libprotobuf-dev libboost-thread1.62-dev libboost-program-options1.62-dev libboost-filesystem1.62-dev libboost-system1.62-dev
+  sudo apt-mark hold libqt4-dev libprotobuf-dev libboost-thread1.62-dev libboost-program-options1.62-dev libboost-filesystem1.62-dev libboost-system1.62-dev
   wget https://github.com/cryptoBUZE/reddcoin/releases/download/rpi_raspbian_buster_v3.0.0/libssl1.0.0_1.0.1t-1%2Bdeb8u6_armhf.deb
   wget https://github.com/cryptoBUZE/reddcoin/releases/download/rpi_raspbian_buster_v3.0.0/libssl-dev_1.0.1t-1%2Bdeb8u6_armhf.deb
+  wget https://github.com/cryptoBUZE/reddcoin/releases/download/rpi_raspbian_buster_v3.0.0/libprotobuf10_3.0.0-9_armhf.deb
   sudo dpkg -i libssl1.0.0_1.0.1t-1+deb8u6_armhf.deb
   sudo dpkg -i libssl-dev_1.0.1t-1+deb8u6_armhf.deb
-  rm libssl*
+  sudo dpkg -i libprotobuf10_3.0.0-9_armhf.deb
+  rm libssl* libprotobuf10_3.0.0-9_armhf.deb
   # Downloading pre compiled Reddcoin Core wallet binaries with ARM cpu support
   echo ""
   echo "--- Downloading pre compiled Reddcoin Core wallet for Raspbian Buster ---"
